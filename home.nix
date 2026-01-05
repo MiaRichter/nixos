@@ -56,18 +56,33 @@
       
       # Настройки редактора теперь здесь
       userSettings = {
-        "editor.fontSize" = 14;
-        "editor.fontFamily" = "'JetBrains Mono', 'monospace'";
-        "workbench.colorTheme" = "Catppuccin Mocha";
-        "nix.enableLanguageServer" = true;
-        "nix.serverPath" = "nil";
-        
-        # Использовать open-vsx вместо Marketplace Microsoft
-        "extensions.gallery" = {
-          "serviceUrl" = "https://open-vsx.org/vscode/gallery";
-          "itemUrl" = "https://open-vsx.org/vscode/item";
-        };
+      # ВСЕ ваши настройки здесь
+      "editor.fontSize" = 14;
+      "editor.fontFamily" = "'JetBrains Mono', 'monospace'";
+      "workbench.colorTheme" = "Catppuccin Mocha";
+      "nix.enableLanguageServer" = true;
+      "nix.serverPath" = "nil";
+      "git.autofetch" = true;
+      
+      # Пример дополнительных настроек
+      "editor.tabSize" = 2;
+      "editor.wordWrap" = "on";
+      "files.autoSave" = "afterDelay";
+      
+      # Настройки для конкретных языков
+      "[nix]" = {
+        "editor.defaultFormatter" = "jnoortheen.nix-ide";
       };
+      "[python]" = {
+        "editor.defaultFormatter" = "ms-python.python";
+      };
+      
+      # Использовать open-vsx
+      "extensions.gallery" = {
+        "serviceUrl" = "https://open-vsx.org/vscode/gallery";
+        "itemUrl" = "https://open-vsx.org/vscode/item";
+      };
+    };
     };
   };
   # Сервисы
