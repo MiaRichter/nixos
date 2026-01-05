@@ -63,6 +63,8 @@
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nil";
       "git.autofetch" = true;
+      "git.enableSmartCommit" = true;
+      "git.confirmSync" = false;
       
       # Пример дополнительных настроек
       "editor.tabSize" = 2;
