@@ -3,6 +3,10 @@
   home.packages = with pkgs; [
     # Редакторы и IDE
     vscodium
+    # Nix Language Server и инструменты
+    nil              # Языковой сервер для Nix (LSP)
+    nixpkgs-fmt      # Форматтер Nix кода
+    alejandra        # Альтернативный форматтер
     #jetbrains.rider
     
     # Мессенджеры и коммуникация

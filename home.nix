@@ -51,7 +51,7 @@
         # Утилиты
         eamodio.gitlens
         # ms-azuretools.vscode-docker
-        github.copilot
+        #github.copilot
       ];
       
       # Настройки редактора теперь здесь
