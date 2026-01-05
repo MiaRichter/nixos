@@ -32,3 +32,8 @@
 - **Display Manager**: GDM with Wayland support
 - **Session Type**: Wayland
 
+### Quick start
+ ```
+ cd /etc/nixos/
+ home-manager switch --flake .#akane@DesMia
+ ```
