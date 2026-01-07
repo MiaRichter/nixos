@@ -10,6 +10,9 @@
       "steam"
       "steam-original"
       "steam-run"
+      "mangohud"           
+      "goverlay"           
+      "protonup-qt"        
     ];
   hardware.graphics = {
     enable = true;
@@ -18,15 +21,9 @@
   environment.systemPackages = with pkgs; [
     lutris
     heroic
-    # bottles
-    # ryujinx
-    # prismlauncher
-
-    steam-tui
-    steamcmd
-    gamemode
-    gamescope
-    gamescope-wsi
+    protonup-qt 
+    mangohud  
+    goverlay 
     steam-run
     wineWowPackages.staging
   ];
@@ -42,10 +39,10 @@
     gamescope = {
       enable = true;
       capSysNice = true;
-      args = [ "--rt" ];
+      args = [
+        "--rt"
+        "--expose-wayland"
+      ];
     };
   };
-  services.xserver.enable = false; # Assuming no other Xserver 
-  hardware.xone.enable = true; # support for the xbox controller USB dongle
-  
 }

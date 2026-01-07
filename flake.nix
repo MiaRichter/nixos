@@ -12,16 +12,16 @@
     };
   };
 
-  outputs = {nixpkgs, home-manager, zapret-discord-youtube, nixos-plymouth, ... }: {
+  outputs = { self, nixpkgs, home-manager, zapret-discord-youtube, nixos-plymouth, ... }: {
     
-    nixosConfigurations.alice = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.DesMia = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         ./hardware-configuration.nix
         ./configuration.nix
         ./system-packages.nix
         ./gameready.nix
-        ./nvidia.nix      
+        ./nvidia.nix
         nixos-plymouth.nixosModules.default
         zapret-discord-youtube.nixosModules.default
         
@@ -36,7 +36,7 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.anrew = {
+          home-manager.users.akane = {
             imports = [
               ./home.nix
               ./user-packages.nix
@@ -47,7 +47,7 @@
     };
 
     # ДОБАВЛЕННЫЙ БЛОК - ваш путь к успешной работе home-manager
-    homeConfigurations."anrew@alice" = home-manager.lib.homeManagerConfiguration {
+    homeConfigurations."akane@DesMia" = home-manager.lib.homeManagerConfiguration {
       # Используем пакеты для x86_64-linux
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       
@@ -60,8 +60,8 @@
         # Дополнительные настройки прямо здесь
         {
           home = {
-            username = "anrew";
-            homeDirectory = "/home/anrew";
+            username = "akane";
+            homeDirectory = "/home/akane";
             # Обязательно укажите версию, совпадающую с home.nix
             stateVersion = "26.05";
           };

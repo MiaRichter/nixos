@@ -19,12 +19,7 @@ in
     __GL_VRR_ALLOWED = "1"; # VRR
     __GL_MaxFramesAllowed = "1"; # Reduces input lag
   };
-  environment.systemPackages = with pkgs; [
-    vulkan-tools
-    vulkan-loader
-    vulkan-validation-layers
-    vulkan-extension-layer
-  ];
+
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [ "nvidia" ]; # or "nvidiaLegacy470", etc.
   boot.kernelParams = lib.optionals (lib.elem "nvidia" config.services.xserver.videoDrivers) [
