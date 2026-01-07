@@ -1,0 +1,74 @@
+# ===== ОСНОВНЫЕ НАСТРОЙКИ =====
+font=JetBrainsMono Nerd Font 10
+margin=20
+padding=20
+width=380
+height=120
+border-size=2
+border-radius=16
+default-timeout=8000
+ignore-timeout=true
+layer=overlay
+sort=-time
+
+# ===== ЦВЕТОВАЯ СХЕМА (Catppuccin Macchiato) =====
+background-color=#1e1e2e
+text-color=#cdd6f4
+border-color=#cba6f7
+progress-color=source #cba6f7
+
+# ===== ЦВЕТА ПО ВАЖНОСТИ =====
+[urgency=low]
+background-color=#45475a
+border-color=#6c7086
+
+[urgency=normal]
+background-color=#1e1e2e
+border-color=#cba6f7
+
+[urgency=high]
+background-color=#f38ba8
+text-color=#11111b
+border-color=#eba0ac
+default-timeout=0
+
+# ===== ИКОНКИ =====
+icons=1
+max-icon-size=64
+
+# ===== КЛИК ПО УВЕДОМЛЕНИЯМ =====
+# Активируем обработку кликов
+on-notify=exec ${HOME}/.config/mako/on_notify.sh %s %a
+
+# ===== КАТЕГОРИИ =====
+[category=music]
+background-color=#89b4fa
+text-color=#11111b
+border-color=#74c7ec
+default-timeout=3000
+group-by=app-name
+
+[category=network]
+background-color=#a6e3a1
+text-color=#11111b
+border-color=#94e2d5
+default-timeout=5000
+
+[category=email]
+background-color=#f9e2af
+text-color=#11111b
+border-color=#fab387
+
+[category=chat]
+background-color=#b4befe
+text-color=#11111b
+border-color=#cba6f7
+
+# ===== ГРУППИРОВКА =====
+group-by=app-name
+# Исправленная строка - убираем кавычки
+#hidden-format=<span alpha='55%'>%g more</span>
+
+# ===== ФОРМАТИРОВАНИЕ =====
+format=<b>%a</b>\n<span size='smaller'>%s</span>\n%b
+markup=1
