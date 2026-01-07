@@ -7,7 +7,7 @@
       ./system-packages.nix 
       ./gameready.nix
       ./nvidia.nix
-      ./network-optimization.nix
+      ./network-optimization.nix 
     ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
@@ -53,7 +53,7 @@
     xwayland.enable = true;
   };
  
-  users.users.anrew = {
+  users.users.akane = {
      shell = pkgs.fish;
      isNormalUser = true;
      extraGroups = [ "networkmanager" "wheel" "video" "audio" "storage" "disk" "plugdev" ];

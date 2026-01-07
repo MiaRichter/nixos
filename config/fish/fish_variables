@@ -1,4 +1,5 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR __fish_initialized:4300
+SETUVAR _hydro_git_594543:Anrew_nix\u2022\x20
 SETUVAR --export fish_greeting:

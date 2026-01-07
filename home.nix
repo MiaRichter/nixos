@@ -2,8 +2,8 @@
 
 {
   home.stateVersion = "26.05";
-  home.username = "anrew";
-  home.homeDirectory = "/home/anrew";
+  home.username = "akane";
+  home.homeDirectory = "/home/akane";
   
   imports = [
     ./user-packages.nix
@@ -12,6 +12,12 @@
   # Настройки программ
   programs.git = {
     enable = true;
+    settings = {
+      user = {
+        name = "MiaRichter";
+        email = "siniy.fill@bk.ru";
+      };
+    };
   };
 
   programs.vscode = {
@@ -93,4 +99,14 @@
   
   # Включить управление файлами через home-manager
   xdg.enable = true;
+  xdg.configFile."mimeapps.list".force = true;
+  xdg.dataFile."applications/mimeapps.list".force = true;
+  
+  # Или полная настройка mimeApps
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "inode/directory" = "org.gnome.Nautilus.desktop";
+    };
+  };
 }

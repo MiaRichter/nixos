@@ -12,17 +12,16 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
-  boot.supportedFilesystems = [ "ntfs" ];
-  
+
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/e355aa1c-1c09-4c6f-96dc-fe3b92f5a1e6";
+    { device = "/dev/disk/by-uuid/9d4b20ea-e049-4930-bd50-5028f1b6d3c1";
       fsType = "btrfs";
-      options = [ "subvol=root" ];
     };
-  fileSystems."/mnt/namana" =
-    { device = "/dev/disk/by-uuid/043b339b-9073-480c-a65f-31a7cde5a83b";
-      fsType = "ext4";
-      options = ["noatime" "nodiratime" ];
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/E0E0-2DC7";
+      fsType = "vfat";
+      options = [ "fmask=0022" "dmask=0022" ];
     };
 
   # Автоматическое монтирование дополнительных дисков при загрузке
@@ -39,7 +38,7 @@
     # uid=1000 и gid=100 — дают права твоему пользователю (akane). Уточни id через `id akane`
   };
 
-  fileSystems."/run/media/games" = {
+  fileSystems."/run/media/ntfs-test" = {
     device = "/dev/disk/by-uuid/F6A09F61A09F26E1"; # nvme0n1p1 (NTFS)
     fsType = "ntfs-3g"; # Для NTFS лучше использовать ntfs-3g
     options = [ "defaults" "rw" "uid=1000" "gid=100" "dmask=022" "fmask=133" "x-systemd.automount" ];
