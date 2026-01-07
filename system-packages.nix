@@ -1,5 +1,16 @@
 { pkgs, ... }:
 {
+  fonts.packages = with pkgs; [
+    # Основные Nerd Fonts
+    nerd-fonts.jetbrains-mono    # Уже есть
+    nerd-fonts.fira-code         # Нужно добавить
+    nerd-fonts.symbols-only      # Нужно добавить
+    dejavu_fonts
+    noto-fonts
+    noto-fonts-color-emoji
+    # Font Awesome
+    font-awesome                # Включает все версии
+  ];
   environment.systemPackages = with pkgs; [
     # Системные утилиты (нужны всем)
     vim
@@ -18,6 +29,7 @@
     hfsprogs
     btrfs-progs
     grc
+    glibcLocales
     # Фонты (системные)
     nerd-fonts.jetbrains-mono
     nerd-fonts.fira-code

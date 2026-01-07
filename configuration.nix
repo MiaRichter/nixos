@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{pkgs, ... }:
 
 {
   imports =
@@ -15,8 +15,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
   networking.hostName = "DesMia";
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
   
+  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  #networking.wireless.enable = false;
   time.timeZone = "Asia/Yekaterinburg";
 
   programs.fish = {
@@ -51,6 +52,18 @@
      extraGroups = [ "networkmanager" "wheel" "video" "audio" "storage" "disk" "plugdev" ];
    };
 
+  # Язык системы
+  i18n = {
+    defaultLocale = "ru_RU.UTF-8";
+    supportedLocales = [ "ru_RU.UTF-8/UTF-8" "en_US.UTF-8/UTF-8" ];
+  };
+  
+  # Язык консоли
+  console = {
+    font = "cyr-sun16";
+    keyMap = "ru";
+  };
+
   services.udisks2.enable = true;
   services.gvfs.enable = true;
   environment = {
@@ -64,6 +77,18 @@
     XDG_CURRENT_DESKTOP = "Hyprland";
     XDG_SESSION_TYPE = "wayland";
     XDG_SESSION_DESKTOP = "Hyprland";
+    LANG = "ru_RU.UTF-8";
+    LC_ALL = "ru_RU.UTF-8";
+    LC_TIME = "ru_RU.UTF-8";
+    LC_MONETARY = "ru_RU.UTF-8";
+    LC_PAPER = "ru_RU.UTF-8";
+    LC_NAME = "ru_RU.UTF-8";
+    LC_ADDRESS = "ru_RU.UTF-8";
+    LC_TELEPHONE = "ru_RU.UTF-8";
+    LC_MEASUREMENT = "ru_RU.UTF-8";
+    LC_IDENTIFICATION = "ru_RU.UTF-8";
+    WLR_DRM_NO_MODIFIERS = "1";
+  WLR_DRM_DEVICES = "/dev/dri/card0";
     };
 };
   xdg.portal = {

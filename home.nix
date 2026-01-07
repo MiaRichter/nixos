@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{pkgs, ... }:
 
 {
   home.stateVersion = "26.05";
@@ -51,7 +51,7 @@
         # Утилиты
         eamodio.gitlens
         # ms-azuretools.vscode-docker
-        github.copilot
+        #github.copilot
       ];
       
       # Настройки редактора теперь здесь
@@ -69,7 +69,7 @@
       # Пример дополнительных настроек
       "editor.tabSize" = 2;
       "editor.wordWrap" = "on";
-      "files.autoSave" = "afterDelay";
+      #"files.autoSave" = "afterDelay";
       
       # Настройки для конкретных языков
       "[nix]" = {
@@ -84,6 +84,8 @@
         "serviceUrl" = "https://open-vsx.org/vscode/gallery";
         "itemUrl" = "https://open-vsx.org/vscode/item";
       };
+     
+    "window.customMenuBarAltFocus" = false;
     };
     };
   };
