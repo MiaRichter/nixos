@@ -48,7 +48,6 @@
     go
     rustc
     cargo
-    
     # Модные утилиты
     lsd
     bat
