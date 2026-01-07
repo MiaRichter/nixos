@@ -84,21 +84,7 @@
         "serviceUrl" = "https://open-vsx.org/vscode/gallery";
         "itemUrl" = "https://open-vsx.org/vscode/item";
       };
-      # ОТКЛЮЧАЕМ Alt+Shift в качестве горячих клавиш в VS Code
-    "keybindings" = [
-      {
-        "key" = "alt+shift+right";  # Отключаем перемещение в следующую группу
-        "command" = "-workbench.action.moveEditorToNextGroup";
-      }
-      {
-        "key" = "alt+shift+left";   # Отключаем перемещение в предыдущую группу
-        "command" = "-workbench.action.moveEditorToPreviousGroup";
-      }
-      {
-        "key" = "alt+shift+i";      # Дополнительно: часто мешающая комбинация
-        "command" = "-editor.action.formatDocument";
-      }
-    ];
+     
     "window.customMenuBarAltFocus" = false;
     };
     };
