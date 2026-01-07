@@ -30,9 +30,16 @@
   programs.nix-ld.enable = true;
   
   services.displayManager.gdm = {
-      enable = true;
+      enable = false;
       wayland = true;
     };
+  services.displayManager.sddm = {
+      enable = true;
+  # 2. Включить экспериментальную поддержку Wayland
+      wayland.enable = true;
+  # 3. (Опционально) Установить тему, чтобы GUI не был пустым
+      theme = "breeze";
+};
   services.pipewire = {
      enable = true;
      wireplumber.enable = true;
@@ -122,6 +129,10 @@
     }
   });
 '';
+home-manager.users.akane = { pkgs, ... }: {
+  # ... ваш home.nix импортируется здесь, либо его содержимое ...
+  imports = [ ./home.nix ];
+};
 nix.gc = {
     automatic = true;
     dates = "weekly";

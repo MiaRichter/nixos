@@ -25,17 +25,23 @@
     };
 
   # Автоматическое монтирование дополнительных дисков при загрузке
-  fileSystems."/mnt/data" = {
+  fileSystems."/rum/media/data" = {
     device = "/dev/disk/by-uuid/7b46fa4a-4886-4250-bff3-c52889aeeebc"; # sdb1 (ext4)
     fsType = "ext4";
     options = [ "defaults" "noatime" "x-systemd.automount" ]; # x-systemd.automount - монтирует при первом обращении
   };
 
-  fileSystems."/mnt/windows" = {
+  fileSystems."/run/media/windows" = {
     device = "/dev/disk/by-uuid/6CD0D1A9D0D17A32"; # nvme0n1p1 (NTFS)
     fsType = "ntfs-3g"; # Для NTFS лучше использовать ntfs-3g
     options = [ "defaults" "rw" "uid=1000" "gid=100" "dmask=022" "fmask=133" "x-systemd.automount" ];
     # uid=1000 и gid=100 — дают права твоему пользователю (akane). Уточни id через `id akane`
+  };
+
+  fileSystems."/run/media/ntfs-test" = {
+    device = "/dev/disk/by-uuid/F6A09F61A09F26E1"; # nvme0n1p1 (NTFS)
+    fsType = "ntfs-3g"; # Для NTFS лучше использовать ntfs-3g
+    options = [ "defaults" "rw" "uid=1000" "gid=100" "dmask=022" "fmask=133" "x-systemd.automount" ];
   };
 
   swapDevices = [ ];
