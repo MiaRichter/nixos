@@ -15,8 +15,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
   networking.hostName = "DesMia";
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
   
+  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  #networking.wireless.enable = false;
   time.timeZone = "Asia/Yekaterinburg";
 
   programs.fish = {
@@ -86,6 +87,8 @@
     LC_TELEPHONE = "ru_RU.UTF-8";
     LC_MEASUREMENT = "ru_RU.UTF-8";
     LC_IDENTIFICATION = "ru_RU.UTF-8";
+    WLR_DRM_NO_MODIFIERS = "1";
+  WLR_DRM_DEVICES = "/dev/dri/card0";
     };
 };
   xdg.portal = {

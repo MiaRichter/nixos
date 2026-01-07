@@ -69,7 +69,7 @@
       # Пример дополнительных настроек
       "editor.tabSize" = 2;
       "editor.wordWrap" = "on";
-      "files.autoSave" = "afterDelay";
+      #"files.autoSave" = "afterDelay";
       
       # Настройки для конкретных языков
       "[nix]" = {
