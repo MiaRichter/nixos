@@ -12,7 +12,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, zapret-discord-youtube, nixos-plymouth, ... }: {
+  outputs = {nixpkgs, home-manager, zapret-discord-youtube, nixos-plymouth, ... }: {
     
     nixosConfigurations.alice = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
