@@ -1,6 +1,8 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [
+home.packages = with pkgs; [
+    # обои
+    linux-wallpaperengine
     # Редакторы и IDE
     vscodium
     # Nix Language Server и инструменты
@@ -15,7 +17,8 @@
     # Мультимедиа
     mpv
     vlc
-    
+    # уведомления
+    mako
     # Игры
     osu-lazer
     
