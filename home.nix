@@ -99,4 +99,14 @@
   
   # Включить управление файлами через home-manager
   xdg.enable = true;
+  xdg.configFile."mimeapps.list".force = true;
+  xdg.dataFile."applications/mimeapps.list".force = true;
+  
+  # Или полная настройка mimeApps
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "inode/directory" = "org.gnome.Nautilus.desktop";
+    };
+  };
 }
