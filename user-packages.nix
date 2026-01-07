@@ -5,7 +5,12 @@ home.packages = with pkgs; [
     linux-wallpaperengine
     # Редакторы и IDE
     vscodium
+    # Nix Language Server и инструменты
+    nil              # Языковой сервер для Nix (LSP)
+    nixpkgs-fmt      # Форматтер Nix кода
+    alejandra        # Альтернативный форматтер
     #jetbrains.rider
+    gnome-system-monitor
     # Мессенджеры и коммуникация
     telegram-desktop
     discord
@@ -46,7 +51,6 @@ home.packages = with pkgs; [
     go
     rustc
     cargo
-    
     # Модные утилиты
     lsd
     bat

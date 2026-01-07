@@ -8,7 +8,7 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
@@ -24,21 +24,28 @@
       fsType = "ext4";
       options = ["noatime" "nodiratime" ];
     };
-  fileSystems."/mnt/namana2" =
-    { device = "/dev/disk/by-uuid/349e1903-332b-4ce2-82f2-a3e64466d501";
-      fsType = "ext4";
-      options = ["noatime" "nodiratime" ];
-    };
-  swapDevices = [{
-    device = "/var/lib/swapfile";
-    size = 16*1024; # 16 GB
-  }];
-  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-  # (the default) this is the recommended approach. When using systemd-networkd it's
-  # still possible to use this option, but it's recommended to use it in conjunction
-  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.eno1.useDHCP = lib.mkDefault true;
+
+  # Автоматическое монтирование дополнительных дисков при загрузке
+  fileSystems."/run/media/data" = {
+    device = "/dev/disk/by-uuid/7b46fa4a-4886-4250-bff3-c52889aeeebc"; # sdb1 (ext4)
+    fsType = "ext4";
+    options = [ "defaults" "noatime" "x-systemd.automount" ]; # x-systemd.automount - монтирует при первом обращении
+  };
+
+  fileSystems."/run/media/windows" = {
+    device = "/dev/disk/by-uuid/6CD0D1A9D0D17A32"; # nvme0n1p1 (NTFS)
+    fsType = "ntfs-3g"; # Для NTFS лучше использовать ntfs-3g
+    options = [ "defaults" "rw" "uid=1000" "gid=100" "dmask=022" "fmask=133" "x-systemd.automount" ];
+    # uid=1000 и gid=100 — дают права твоему пользователю (akane). Уточни id через `id akane`
+  };
+
+  fileSystems."/run/media/games" = {
+    device = "/dev/disk/by-uuid/F6A09F61A09F26E1"; # nvme0n1p1 (NTFS)
+    fsType = "ntfs-3g"; # Для NTFS лучше использовать ntfs-3g
+    options = [ "defaults" "rw" "uid=1000" "gid=100" "dmask=022" "fmask=133" "x-systemd.automount" ];
+  };
+
+  swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

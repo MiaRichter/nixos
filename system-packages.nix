@@ -29,6 +29,7 @@ fonts.packages = with pkgs; [
     hfsprogs
     btrfs-progs
     grc
+    glibcLocales
     # Фонты (системные)
     nerd-fonts.jetbrains-mono
     nerd-fonts.fira-code
