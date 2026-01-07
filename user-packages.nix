@@ -8,7 +8,7 @@
     nixpkgs-fmt      # Форматтер Nix кода
     alejandra        # Альтернативный форматтер
     #jetbrains.rider
-    
+    gnome-system-monitor
     # Мессенджеры и коммуникация
     telegram-desktop
     discord
