@@ -23,7 +23,7 @@
 - **Monitors**:
   - DP-2: Acer XF253Q (1920x1080 @ 240Hz)
   - DP-3: KTC AQW34H3 (3440x1440 @ 165Hz)
-  - HDMI: ASUS (1920x1080 @ 60Hz)
+  - HDMI: ASUS (1920x1080 @ 75Hz)
 - **CPU**: Intel i7 14700kf (with latest microcode)
 - **Storage**: BTRFS root + VFAT boot
 

@@ -86,15 +86,9 @@
       };
      
     "window.customMenuBarAltFocus" = false;
+    "editor.stickyScroll.enabled" = false;
     };
     };
-  };
-  # Сервисы
-  services.udiskie = {
-    enable = true;
-    tray = "auto";
-    automount = true;
-    notify = true;
   };
   
   # Переменные окружения
