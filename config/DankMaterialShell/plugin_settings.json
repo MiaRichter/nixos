@@ -1,0 +1,49 @@
+{
+  "linuxWallpaperEngine": {
+    "enabled": true,
+    "generateStaticWallpaper": false,
+    "monitorScenes": {
+      "HDMI-A-1": "844323449"
+    },
+    "sceneSettings": {
+      "1071700457": {
+        "scaling": "stretch"
+      },
+      "1077353095": {
+        "scaling": "stretch",
+        "silent": true
+      },
+      "1086399045": {
+        "fps": 28
+      },
+      "1087685961": {
+        "scaling": "stretch"
+      },
+      "1115554966": {
+        "scaling": "stretch"
+      },
+      "1134412710": {
+        "fps": 37
+      },
+      "1170514368": {
+        "fps": 34
+      },
+      "1311951951": {
+        "scaling": "stretch",
+        "fps": 28
+      },
+      "1569133561": {
+        "fps": 60
+      },
+      "2981249186": {
+        "scaling": "stretch"
+      },
+      "3047405322": {
+        "scaling": "fill"
+      },
+      "3108663988": {
+        "scaling": "stretch"
+      }
+    }
+  }
+}

@@ -14,19 +14,34 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  networking.hostName = "DesMia";
+  networking.hostName = "alice";
   
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
   #networking.wireless.enable = false;
   time.timeZone = "Asia/Yekaterinburg";
 
   programs.fish = {
-  enable = true;
-  interactiveShellInit = ''
-    set -U fish_greeting ""
-  '';
-};
+    enable = true;
+    interactiveShellInit = ''
+      set -U fish_greeting ""
+    '';
+  };
+  programs.dms-shell = {
+    enable = true;
 
+    systemd = {
+      enable = true;             # Systemd service for auto-start
+      restartIfChanged = true;   # Auto-restart dms.service when dms-shell changes
+    };
+    
+    # Core features
+    enableSystemMonitoring = true;     # System monitoring widgets (dgop)
+    enableClipboard = true;            # Clipboard history manager
+    enableVPN = true;                  # VPN management widget
+    enableDynamicTheming = true;       # Wallpaper-based theming (matugen)
+    enableAudioWavelength = true;      # Audio visualizer (cava)
+    enableCalendarEvents = true;       # Calendar integration (khal)
+  };
   programs.nix-ld.enable = true;
   
   services.displayManager.gdm = {
@@ -53,7 +68,7 @@
     xwayland.enable = true;
   };
  
-  users.users.akane = {
+  users.users.anrew = {
      shell = pkgs.fish;
      isNormalUser = true;
      extraGroups = [ "networkmanager" "wheel" "video" "audio" "storage" "disk" "plugdev" ];
@@ -129,7 +144,7 @@
     }
   });
 '';
-home-manager.users.akane = { pkgs, ... }: {
+home-manager.users.anrew = { pkgs, ... }: {
   # ... ваш home.nix импортируется здесь, либо его содержимое ...
   imports = [ ./home.nix ];
 };
