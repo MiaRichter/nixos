@@ -25,7 +25,7 @@
     };
 
   # Автоматическое монтирование дополнительных дисков при загрузке
-  fileSystems."/rum/media/data" = {
+  fileSystems."/run/media/data" = {
     device = "/dev/disk/by-uuid/7b46fa4a-4886-4250-bff3-c52889aeeebc"; # sdb1 (ext4)
     fsType = "ext4";
     options = [ "defaults" "noatime" "x-systemd.automount" ]; # x-systemd.automount - монтирует при первом обращении
