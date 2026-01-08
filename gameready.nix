@@ -23,6 +23,11 @@
     heroic
     protonup-qt 
     mangohud  
+    steam-tui
+    steamcmd
+    gamemode
+    gamescope
+    gamescope-wsi
     goverlay 
     steam-run
     wineWowPackages.staging
@@ -45,4 +50,6 @@
       ];
     };
   };
+  services.xserver.enable = false; # Assuming no other Xserver 
+  hardware.xone.enable = true; # support for the xbox controller USB dongle
 }

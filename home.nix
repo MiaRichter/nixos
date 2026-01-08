@@ -1,9 +1,9 @@
-{pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   home.stateVersion = "26.05";
-  home.username = "akane";
-  home.homeDirectory = "/home/akane";
+  home.username = "anrew";
+  home.homeDirectory = "/home/anrew";
   
   imports = [
     ./user-packages.nix
@@ -12,14 +12,7 @@
   # Настройки программ
   programs.git = {
     enable = true;
-    settings = {
-      user = {
-        name = "MiaRichter";
-        email = "siniy.fill@bk.ru";
-      };
-    };
   };
-
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
@@ -89,6 +82,13 @@
     "editor.stickyScroll.enabled" = false;
     };
     };
+  };
+  # Сервисы
+  services.udiskie = {
+    enable = true;
+    tray = "auto";
+    automount = true;
+    notify = true;
   };
   
   # Переменные окружения
