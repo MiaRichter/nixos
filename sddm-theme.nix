@@ -3,7 +3,7 @@ stdenv.mkDerivation rec {
   pname = "sddm-astronaut-theme";
   version = "1";
   
-  src = ./config/sddm/sddm-astronaut-theme;
+  src = /etc/nixos/config/sddm-theme/sddm-astronaut-theme;
   
   dontBuild = true;
   

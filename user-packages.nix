@@ -53,5 +53,9 @@ home.packages = with pkgs; [
     dust
     # для quickshell
     quickshell
+
+    # # sddm theme
+    # qt6.qtmultimedia
+    # qt6.qtvirtualkeyboard 
   ];
 }

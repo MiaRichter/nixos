@@ -43,17 +43,18 @@
     enableCalendarEvents = true;       # Calendar integration (khal)
   };
   programs.nix-ld.enable = true;
-  
+  services.xserver.displayManager.autoLogin.enable = true;
+  services.xserver.displayManager.autoLogin.user = "anrew";
   services.displayManager.gdm = {
-      enable = false;
+      enable = true;
       wayland = true;
     };
   services.displayManager.sddm = {
-      enable = true;
+      enable = false;
   # 2. Включить экспериментальную поддержку Wayland
       wayland.enable = true;
   # 3. (Опционально) Установить тему, чтобы GUI не был пустым
-      theme = "breeze";
+      theme = "sddm-astronaut-theme";
 };
   services.pipewire = {
      enable = true;

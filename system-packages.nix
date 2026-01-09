@@ -13,7 +13,7 @@ fonts.packages = with pkgs; [
   ];
   environment.systemPackages = with pkgs; [
     # Системные утилиты (нужны всем)
-    (callPackage ./sddm-theme.nix {})
+    #(callPackage ./sddm-theme.nix {})
     vim
     nano
     git
