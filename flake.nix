@@ -14,7 +14,10 @@
   outputs = { self, nixpkgs, home-manager, zapret-discord-youtube,nixos-plymouth, ... }: 
     let
       # ИМПОРТИРУЙТЕ переменные здесь
-      vars = import ./variables.nix;
+      vars = if builtins.pathExists ./user.nix then import ./user.nix else {
+        username = "user";
+        hostname = "nixos";
+      };
     in
     {
     

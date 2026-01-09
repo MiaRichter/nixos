@@ -1,9 +1,15 @@
 { config, pkgs, ... }:
-
+let
+      # ИМПОРТИРУЙТЕ переменные здесь
+    vars = if builtins.pathExists ./user.nix then import ./user.nix else {
+      username = "user";
+      hostname = "nixos";
+    };
+in
 {
   home.stateVersion = "26.05";
-  home.username = "anrew";
-  home.homeDirectory = "/home/anrew";
+  home.username = "${vars.username}";
+  home.homeDirectory = "/home/${vars.username}";
   
   imports = [
     ./user-packages.nix
