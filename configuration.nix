@@ -4,6 +4,7 @@
   imports =
     [ 
       ./hardware-configuration.nix
+      ./personal-config.nix
       ./system-packages.nix 
       ./gameready.nix
       ./nvidia.nix
@@ -14,7 +15,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  networking.hostName = "alice";
+ 
   
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
   #networking.wireless.enable = false;
@@ -43,8 +44,7 @@
     enableCalendarEvents = true;       # Calendar integration (khal)
   };
   programs.nix-ld.enable = true;
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "anrew";
+
   services.displayManager.gdm = {
       enable = true;
       wayland = true;
@@ -69,11 +69,7 @@
     xwayland.enable = true;
   };
  
-  users.users.anrew = {
-     shell = pkgs.fish;
-     isNormalUser = true;
-     extraGroups = [ "networkmanager" "wheel" "video" "audio" "storage" "disk" "plugdev" ];
-   };
+  
 
   # Язык системы
   i18n = {
@@ -145,10 +141,7 @@
     }
   });
 '';
-home-manager.users.anrew = { pkgs, ... }: {
-  # ... ваш home.nix импортируется здесь, либо его содержимое ...
-  imports = [ ./home.nix ];
-};
+
 nix.gc = {
     automatic = true;
     dates = "weekly";
