@@ -1,6 +1,5 @@
 {
   description = "NixOS configuration";
-
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     zapret-discord-youtube.url = "github:kartavkun/zapret-discord-youtube";
@@ -12,13 +11,17 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, zapret-discord-youtube, nixos-plymouth, ... }: {
+  outputs = { self, nixpkgs, home-manager, zapret-discord-youtube,nixos-plymouth, ... }: 
+    let
+      # ИМПОРТИРУЙТЕ переменные здесь
+      vars = import ./variables.nix;
+    in
+    {
     
-    nixosConfigurations.alice = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.${vars.hostname} = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         ./hardware-configuration.nix
-        ./personal-config.nix
         ./configuration.nix
         ./system-packages.nix
         ./gameready.nix
@@ -36,7 +39,7 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.anrew = {
+          home-manager.users.${vars.username} = {
             imports = [
               ./home.nix
               ./user-packages.nix
@@ -47,7 +50,7 @@
     };
 
     # ДОБАВЛЕННЫЙ БЛОК - ваш путь к успешной работе home-manager
-    homeConfigurations."anrew@alice" = home-manager.lib.homeManagerConfiguration {
+    homeConfigurations."${vars.username}@${vars.hostname}" = home-manager.lib.homeManagerConfiguration {
       # Используем пакеты для x86_64-linux
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       # Модули конфигурации home-manager
@@ -58,8 +61,8 @@
         # Дополнительные настройки прямо здесь
         {
           home = {
-            username = "anrew";
-            homeDirectory = "/home/anrew";
+            username = "${vars.username}";
+            homeDirectory = "/home/${vars.username}";
             # Обязательно укажите версию, совпадающую с home.nix
             stateVersion = "26.05";
           };
