@@ -11,7 +11,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, zapret-discord-youtube,nixos-plymouth, ... }: 
+  outputs = {nixpkgs, home-manager, zapret-discord-youtube,nixos-plymouth, ... }: 
     let
       # ИМПОРТИРУЙТЕ переменные здесь
       vars = if builtins.pathExists ./user.nix then import ./user.nix else {
