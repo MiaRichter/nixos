@@ -1,21 +1,18 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [
+home.packages = with pkgs; [
+    # обои
+    linux-wallpaperengine
     # Редакторы и IDE
     vscodium
-    # Nix Language Server и инструменты
-    nil              # Языковой сервер для Nix (LSP)
-    nixpkgs-fmt      # Форматтер Nix кода
-    alejandra        # Альтернативный форматтер
     #jetbrains.rider
-    gnome-system-monitor
     # Мессенджеры и коммуникация
     telegram-desktop
     discord
     # Мультимедиа
     mpv
     vlc
-    
+    # уведомления
     # Игры
     osu-lazer
     
@@ -54,5 +51,11 @@
     fd
     duf
     dust
+    # для quickshell
+    quickshell
+
+    # # sddm theme
+    # qt6.qtmultimedia
+    # qt6.qtvirtualkeyboard 
   ];
 }

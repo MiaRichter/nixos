@@ -8,43 +8,37 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
-
+  boot.supportedFilesystems = [ "ntfs" ];
+  
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/9d4b20ea-e049-4930-bd50-5028f1b6d3c1";
+    { device = "/dev/disk/by-uuid/e355aa1c-1c09-4c6f-96dc-fe3b92f5a1e6";
       fsType = "btrfs";
+      options = [ "subvol=root" ];
     };
-
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/E0E0-2DC7";
-      fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
+  fileSystems."/mnt/namana" =
+    { device = "/dev/disk/by-uuid/043b339b-9073-480c-a65f-31a7cde5a83b";
+      fsType = "ext4";
+      options = ["noatime" "nodiratime" ];
     };
-
-  # Автоматическое монтирование дополнительных дисков при загрузке
-  fileSystems."/run/media/data" = {
-    device = "/dev/disk/by-uuid/7b46fa4a-4886-4250-bff3-c52889aeeebc"; # sdb1 (ext4)
-    fsType = "ext4";
-    options = [ "defaults" "noatime" "x-systemd.automount" ]; # x-systemd.automount - монтирует при первом обращении
-  };
-
-  fileSystems."/run/media/windows" = {
-    device = "/dev/disk/by-uuid/6CD0D1A9D0D17A32"; # nvme0n1p1 (NTFS)
-    fsType = "ntfs-3g"; # Для NTFS лучше использовать ntfs-3g
-    options = [ "defaults" "rw" "uid=1000" "gid=100" "dmask=022" "fmask=133" "x-systemd.automount" ];
-    # uid=1000 и gid=100 — дают права твоему пользователю (akane). Уточни id через `id akane`
-  };
-
-  fileSystems."/run/media/ntfs-test" = {
-    device = "/dev/disk/by-uuid/F6A09F61A09F26E1"; # nvme0n1p1 (NTFS)
-    fsType = "ntfs-3g"; # Для NTFS лучше использовать ntfs-3g
-    options = [ "defaults" "rw" "uid=1000" "gid=100" "dmask=022" "fmask=133" "x-systemd.automount" ];
-  };
-
-  swapDevices = [ ];
+  fileSystems."/mnt/namana2" =
+    { device = "/dev/disk/by-uuid/349e1903-332b-4ce2-82f2-a3e64466d501";
+      fsType = "ext4";
+      options = ["noatime" "nodiratime" ];
+    };
+  swapDevices = [{
+    device = "/var/lib/swapfile";
+    size = 16*1024; # 16 GB
+  }];
+  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
+  # (the default) this is the recommended approach. When using systemd-networkd it's
+  # still possible to use this option, but it's recommended to use it in conjunction
+  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
+  networking.useDHCP = lib.mkDefault true;
+  # networking.interfaces.eno1.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

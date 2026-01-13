@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  fonts.packages = with pkgs; [
+fonts.packages = with pkgs; [
     # Основные Nerd Fonts
     nerd-fonts.jetbrains-mono    # Уже есть
     nerd-fonts.fira-code         # Нужно добавить
@@ -13,6 +13,7 @@
   ];
   environment.systemPackages = with pkgs; [
     # Системные утилиты (нужны всем)
+    #(callPackage ./sddm-theme.nix {})
     vim
     nano
     git
@@ -29,7 +30,6 @@
     hfsprogs
     btrfs-progs
     grc
-    glibcLocales
     # Фонты (системные)
     nerd-fonts.jetbrains-mono
     nerd-fonts.fira-code

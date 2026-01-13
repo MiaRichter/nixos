@@ -4,6 +4,7 @@
   imports =
     [ 
       ./hardware-configuration.nix
+      ./personal-config.nix
       ./system-packages.nix 
       ./gameready.nix
       ./nvidia.nix
@@ -14,31 +15,46 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  networking.hostName = "DesMia";
+ 
   
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
   #networking.wireless.enable = false;
   time.timeZone = "Asia/Yekaterinburg";
 
   programs.fish = {
-  enable = true;
-  interactiveShellInit = ''
-    set -U fish_greeting ""
-  '';
-};
+    enable = true;
+    interactiveShellInit = ''
+      set -U fish_greeting ""
+    '';
+  };
+  programs.dms-shell = {
+    enable = true;
 
+    systemd = {
+      enable = true;             # Systemd service for auto-start
+      restartIfChanged = true;   # Auto-restart dms.service when dms-shell changes
+    };
+    
+    # Core features
+    enableSystemMonitoring = true;     # System monitoring widgets (dgop)
+    enableClipboard = true;            # Clipboard history manager
+    enableVPN = true;                  # VPN management widget
+    enableDynamicTheming = true;       # Wallpaper-based theming (matugen)
+    enableAudioWavelength = true;      # Audio visualizer (cava)
+    enableCalendarEvents = true;       # Calendar integration (khal)
+  };
   programs.nix-ld.enable = true;
-  
+
   services.displayManager.gdm = {
-      enable = false;
+      enable = true;
       wayland = true;
     };
   services.displayManager.sddm = {
-      enable = true;
+      enable = false;
   # 2. Включить экспериментальную поддержку Wayland
       wayland.enable = true;
   # 3. (Опционально) Установить тему, чтобы GUI не был пустым
-      theme = "breeze";
+      theme = "sddm-astronaut-theme";
 };
   services.pipewire = {
      enable = true;
@@ -53,11 +69,7 @@
     xwayland.enable = true;
   };
  
-  users.users.akane = {
-     shell = pkgs.fish;
-     isNormalUser = true;
-     extraGroups = [ "networkmanager" "wheel" "video" "audio" "storage" "disk" "plugdev" ];
-   };
+  
 
   # Язык системы
   i18n = {
@@ -129,10 +141,7 @@
     }
   });
 '';
-home-manager.users.akane = { pkgs, ... }: {
-  # ... ваш home.nix импортируется здесь, либо его содержимое ...
-  imports = [ ./home.nix ];
-};
+
 nix.gc = {
     automatic = true;
     dates = "weekly";
