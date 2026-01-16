@@ -8,6 +8,24 @@ fonts.packages = with pkgs; [
     dejavu_fonts
     noto-fonts
     noto-fonts-color-emoji
+    liberation_ttf
+    freefont_ttf
+    
+    # Noto шрифты (много языков)
+    noto-fonts-lgc-plus
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
+    noto-fonts-monochrome-emoji
+    
+    # Microsoft совместимые (для игр)
+    corefonts  # или vistafonts
+    # или если нет в официальных репозиториях:
+    # (from nixos-unstable) microsoft-fonts
+    
+    # Дополнительные
+    ubuntu-classic
+    fira-code
+    fira-code-symbols
     # Font Awesome
     font-awesome                # Включает все версии
   ];

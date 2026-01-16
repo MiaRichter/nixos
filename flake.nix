@@ -4,6 +4,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     zapret-discord-youtube.url = "github:kartavkun/zapret-discord-youtube";
     nixos-plymouth.url = "github:BeatLink/nixos-plymouth";
+    yandex-browser.url = "github:miuirussia/yandex-browser.nix";
     dms.url = "github:AvengeMedia/DankMaterialShell";
     home-manager = {
       url = "github:nix-community/home-manager";
