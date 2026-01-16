@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{pkgs, ... }:
 let
       # ИМПОРТИРУЙТЕ переменные здесь
     vars = if builtins.pathExists ./user.nix then import ./user.nix else {
