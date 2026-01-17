@@ -19,6 +19,22 @@
         "type": "github"
       }
     },
+    "flake-compat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1767039857,
+        "narHash": "sha256-vNpUSpF5Nuw8xvDLj2KCwwksIbjua2LZCqhV1LNRDns=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "5edf11c44bc78a0d334f6334cdaf7d60d732daab",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -106,6 +122,22 @@
     },
     "nixpkgs_3": {
       "locked": {
+        "lastModified": 1768351280,
+        "narHash": "sha256-mUmIYDogWe6BkwAPEyrq6QNwu4O50j4JtcY6qQ1fsb4=",
+        "owner": "miuirussia",
+        "repo": "nixpkgs",
+        "rev": "733384534ff8951495e281ff1ef4fe74df1d892f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "miuirussia",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_4": {
+      "locked": {
         "lastModified": 1767767207,
         "narHash": "sha256-Mj3d3PfwltLmukFal5i3fFt27L6NiKXdBezC1EBuZs4=",
         "owner": "NixOS",
@@ -148,6 +180,7 @@
         "home-manager": "home-manager",
         "nixos-plymouth": "nixos-plymouth",
         "nixpkgs": "nixpkgs_2",
+        "yandex-browser": "yandex-browser",
         "zapret-discord-youtube": "zapret-discord-youtube"
       }
     },
@@ -166,10 +199,29 @@
         "type": "github"
       }
     },
+    "yandex-browser": {
+      "inputs": {
+        "flake-compat": "flake-compat",
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1768523523,
+        "narHash": "sha256-cBa2NTgM0xMZykuM7EQwXQkGKuTEz+RVQ4zSN29ediA=",
+        "owner": "miuirussia",
+        "repo": "yandex-browser.nix",
+        "rev": "95827a1fd92dd9b84149d01052403a84b6215ef4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "miuirussia",
+        "repo": "yandex-browser.nix",
+        "type": "github"
+      }
+    },
     "zapret-discord-youtube": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_4"
       },
       "locked": {
         "lastModified": 1767817307,

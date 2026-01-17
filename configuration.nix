@@ -88,26 +88,27 @@
   environment = {
     # Переменные для Wayland
     sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-    MOZ_ENABLE_WAYLAND = "1";
-    QT_QPA_PLATFORM = "wayland";
-    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-    SDL_VIDEODRIVER = "wayland";
-    XDG_CURRENT_DESKTOP = "Hyprland";
-    XDG_SESSION_TYPE = "wayland";
-    XDG_SESSION_DESKTOP = "Hyprland";
-    LANG = "ru_RU.UTF-8";
-    LC_ALL = "ru_RU.UTF-8";
-    LC_TIME = "ru_RU.UTF-8";
-    LC_MONETARY = "ru_RU.UTF-8";
-    LC_PAPER = "ru_RU.UTF-8";
-    LC_NAME = "ru_RU.UTF-8";
-    LC_ADDRESS = "ru_RU.UTF-8";
-    LC_TELEPHONE = "ru_RU.UTF-8";
-    LC_MEASUREMENT = "ru_RU.UTF-8";
-    LC_IDENTIFICATION = "ru_RU.UTF-8";
-    WLR_DRM_NO_MODIFIERS = "1";
-  WLR_DRM_DEVICES = "/dev/dri/card0";
+      BROWSER = "yandex-browser-stable";
+      NIXOS_OZONE_WL = "1";
+      MOZ_ENABLE_WAYLAND = "1";
+      QT_QPA_PLATFORM = "wayland";
+      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+      SDL_VIDEODRIVER = "wayland";
+      XDG_CURRENT_DESKTOP = "Hyprland";
+      XDG_SESSION_TYPE = "wayland";
+      XDG_SESSION_DESKTOP = "Hyprland";
+      LANG = "ru_RU.UTF-8";
+      LC_ALL = "ru_RU.UTF-8";
+      LC_TIME = "ru_RU.UTF-8";
+      LC_MONETARY = "ru_RU.UTF-8";
+      LC_PAPER = "ru_RU.UTF-8";
+      LC_NAME = "ru_RU.UTF-8";
+      LC_ADDRESS = "ru_RU.UTF-8";
+      LC_TELEPHONE = "ru_RU.UTF-8";
+      LC_MEASUREMENT = "ru_RU.UTF-8";
+      LC_IDENTIFICATION = "ru_RU.UTF-8";
+      WLR_DRM_NO_MODIFIERS = "1";
+      WLR_DRM_DEVICES = "/dev/dri/card0";
     };
 };
   xdg.portal = {
