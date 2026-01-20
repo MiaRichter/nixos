@@ -53,7 +53,7 @@ home.packages = with pkgs; [
     dust
     # для quickshell
     quickshell
-
+    appimage-run
     # # sddm theme
     # qt6.qtmultimedia
     # qt6.qtvirtualkeyboard 
