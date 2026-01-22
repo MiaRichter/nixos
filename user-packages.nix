@@ -54,6 +54,8 @@ home.packages = with pkgs; [
     # для quickshell
     quickshell
     appimage-run
+    openvpn 
+    wireguard-tools
     # # sddm theme
     # qt6.qtmultimedia
     # qt6.qtvirtualkeyboard 
