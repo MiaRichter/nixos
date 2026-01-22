@@ -1,43 +1,49 @@
-# outline-proxy.nix
 { config, lib, pkgs, ... }:
 
 let
-  # Путь к вашим файлам Outline
-  outlineDir = "/home/youruser/path/to/outline";
+  # Ваше имя пользователя
+  username = "anrew";  # Замените на ваше имя пользователя
+  
+  # Путь к файлам Outline
+  outlineDir = "./config/";  # Укажите правильный путь
   
   # Деривация для OutlineProxyController
   outlineController = pkgs.writeShellScriptBin "OutlineProxyController" ''
     #!/bin/sh
     # Содержимое вашего OutlineProxyController скрипта
-    ${builtins.readFile "${outlineDir}/OutlineProxyController"}
+    # Вставьте сюда содержимое файла OutlineProxyController
+    # Или используйте: ${builtins.readFile "${outlineDir}/OutlineProxyController"}
+    echo "Outline Proxy Controller running"
+    # ... ваш код здесь ...
   '';
 in
 {
   # Добавляем группу
   users.groups.outlinevpn = {};
   
-  # Добавляем пользователя в группу (замените youruser)
-  users.users.youruser.extraGroups = [ "outlinevpn" ];
+  # Настраиваем пользователя (УБЕДИТЕСЬ ЧТО ЭТО УЖЕ ЕСТЬ В КОНФИГЕ!)
+  # Не дублируйте определение пользователя, если он уже есть
+  # Вместо этого добавляем только extraGroups
+  users.users.${username} = {
+    # Если пользователь уже определен в основном конфиге, 
+    # НЕ добавляйте isNormalUser/isSystemUser здесь
+    # Просто добавьте группу:
+    extraGroups = [ "outlinevpn" ];
+  };
   
-  # Создаем systemd сервис
+  # Systemd сервис
   systemd.services.outline_proxy_controller = {
+    enable = true;
     description = "Outline Proxy Controller";
     wantedBy = [ "multi-user.target" ];
     after = [ "network.target" ];
     
     serviceConfig = {
       Type = "simple";
-      ExecStart = "${outlineController}/bin/OutlineProxyController --owning-user-id=1000"; # Замените 1000 на ваш UID: id -u youruser
+      ExecStart = "${outlineController}/bin/OutlineProxyController --owning-user-id=${toString config.users.users.${username}.uid}";
       Restart = "always";
       User = "root";
       Group = "outlinevpn";
-      # Дополнительные настройки из вашего .service файла
     };
-    
-    # Скопируйте остальные параметры из outline_proxy_controller.service
-    # например: Environment, WorkingDirectory и т.д.
   };
-  
-  # Добавляем пакет в systemPackages если нужно
-  environment.systemPackages = [ outlineController ];
 }
