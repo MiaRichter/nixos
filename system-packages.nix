@@ -25,6 +25,7 @@ fonts.packages = with pkgs; [
     dmidecode
     proxychains
     shadowsocks-libev
+    shadowsocks-rust
     # Драйверы и утилиты файловых систем
     ntfs3g
     exfat
