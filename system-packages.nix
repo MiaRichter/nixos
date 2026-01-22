@@ -23,6 +23,8 @@ fonts.packages = with pkgs; [
     usbutils
     lm_sensors
     dmidecode
+    proxychains
+    shadowsocks-libev
     # Драйверы и утилиты файловых систем
     ntfs3g
     exfat
