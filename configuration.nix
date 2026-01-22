@@ -9,15 +9,21 @@
       ./gameready.nix
       ./nvidia.nix
       ./network-optimization.nix 
+      ./outline-proxy.nix
     ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
- 
+    # Сеть
+  networking.networkmanager.enable = true;
   
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  # TUN/TAP для VPN
+  boot.kernelModules = [ "tun" "wireguard" ];
+  
+  # Разрешить доступ к /dev/net/tun
+  boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
   #networking.wireless.enable = false;
   time.timeZone = "Asia/Yekaterinburg";
 
@@ -113,6 +119,7 @@
 };
   xdg.portal = {
     enable = true;
+    wlr.enable = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
       xdg-desktop-portal-hyprland
@@ -136,7 +143,11 @@
       action.id == "org.freedesktop.udisks2.filesystem-mount-system" ||
       action.id == "org.freedesktop.udisks2.filesystem-mount" ||
       action.id == "org.freedesktop.udisks2.eject-media" ||
-      action.id == "org.freedesktop.udisks2.power-off-drive"
+      action.id == "org.freedesktop.udisks2.power-off-drive" ||
+      action.id.indexOf("org.outline") === 0 ||
+      action.id.indexOf("org.bebra") === 0 ||
+      action.id == "org.freedesktop.policykit.exec" ||
+      action.id.indexOf("org.freedesktop.systemd1") === 0
     ) {
       return polkit.Result.YES;
     }
