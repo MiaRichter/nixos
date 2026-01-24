@@ -15,7 +15,7 @@ home.packages = with pkgs; [
     # уведомления
     # Игры
     osu-lazer
-    
+    qbittorrent
     # Офис
     libreoffice-fresh
     
