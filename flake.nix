@@ -12,7 +12,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, zapret-discord-youtube,nixos-plymouth, ... }: 
+  outputs = {nixpkgs, home-manager, zapret-discord-youtube,nixos-plymouth, ... }: 
     let
       # ИМПОРТИРУЙТЕ переменные здесь
       vars = if builtins.pathExists ./user.nix then import ./user.nix else {
@@ -52,28 +52,28 @@
         }
       ];
     };
-    devShells.x86_64-linux.lab1 =
-    let
-      pkgs = nixpkgs.legacyPackages.x86_64-linux;
-    in
-    pkgs.mkShell {
-      name = "lab1-excel-shell";
+  devShells.x86_64-linux.lab1 =
+  let
+    pkgs = nixpkgs.legacyPackages.x86_64-linux;
+  in
+  pkgs.mkShell {
+    name = "lab1-excel-shell";
 
-      buildInputs = [
-        pkgs.rustc
-        pkgs.cargo
-        pkgs.clang
-        pkgs.llvmPackages.libclang
-        pkgs.pkg-config
-      ];
+    buildInputs = [
+      pkgs.rustc
+      pkgs.cargo
+      pkgs.clang
+      pkgs.llvmPackages.libclang
+      pkgs.pkg-config
+    ];
 
-      LIBCLANG_PATH = "${pkgs.llvmPackages.libclang.lib}/lib";
+    LIBCLANG_PATH = "${pkgs.llvmPackages.libclang.lib}/lib";
 
-      shellHook = ''
-        echo "🦀 Rust Excel Lab shell loaded"
-        echo "LIBCLANG_PATH=$LIBCLANG_PATH"
-      '';
-    };
+    shellHook = ''
+      echo "🦀 Rust Excel Lab shell loaded"
+      echo "LIBCLANG_PATH=$LIBCLANG_PATH"
+    '';
+  };
 
     # ДОБАВЛЕННЫЙ БЛОК - ваш путь к успешной работе home-manager
     homeConfigurations."${vars.username}@${vars.hostname}" = home-manager.lib.homeManagerConfiguration {
