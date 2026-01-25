@@ -6,16 +6,32 @@
         "quickshell": "quickshell"
       },
       "locked": {
-        "lastModified": 1769314160,
-        "narHash": "sha256-agb4WCMgOqiLiLZnq5CGpY/aU80596X/FUbi0b45xKA=",
+        "lastModified": 1769365811,
+        "narHash": "sha256-9J4ossBiRbjJtcwFweXgzYB5Y29es6UOZrhVRDD9fGQ=",
         "owner": "AvengeMedia",
         "repo": "DankMaterialShell",
-        "rev": "f7df3b2a685444ab8b44d38a286ddafe38bc2bff",
+        "rev": "832807a2171bdeb3bb85025b8d23f6f9d481a381",
         "type": "github"
       },
       "original": {
         "owner": "AvengeMedia",
         "repo": "DankMaterialShell",
+        "type": "github"
+      }
+    },
+    "flake-compat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1767039857,
+        "narHash": "sha256-vNpUSpF5Nuw8xvDLj2KCwwksIbjua2LZCqhV1LNRDns=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "5edf11c44bc78a0d334f6334cdaf7d60d732daab",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
         "type": "github"
       }
     },
@@ -86,6 +102,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1768351280,
+        "narHash": "sha256-mUmIYDogWe6BkwAPEyrq6QNwu4O50j4JtcY6qQ1fsb4=",
+        "owner": "miuirussia",
+        "repo": "nixpkgs",
+        "rev": "733384534ff8951495e281ff1ef4fe74df1d892f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "miuirussia",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "quickshell": {
       "inputs": {
         "nixpkgs": [
@@ -113,7 +145,27 @@
         "dms": "dms",
         "home-manager": "home-manager",
         "nixos-plymouth": "nixos-plymouth",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "yandex-browser": "yandex-browser"
+      }
+    },
+    "yandex-browser": {
+      "inputs": {
+        "flake-compat": "flake-compat",
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1768523523,
+        "narHash": "sha256-cBa2NTgM0xMZykuM7EQwXQkGKuTEz+RVQ4zSN29ediA=",
+        "owner": "miuirussia",
+        "repo": "yandex-browser.nix",
+        "rev": "95827a1fd92dd9b84149d01052403a84b6215ef4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "miuirussia",
+        "repo": "yandex-browser.nix",
+        "type": "github"
       }
     }
   },
