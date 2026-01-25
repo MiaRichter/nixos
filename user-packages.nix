@@ -45,6 +45,7 @@ home.packages = with pkgs; [
     go
     rustc
     cargo
+    jetbrains.rider
     winetricks
     # Модные утилиты
     lsd
