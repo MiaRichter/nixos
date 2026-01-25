@@ -9,7 +9,7 @@
       ./gameready.nix
       ./nvidia.nix
       ./network-optimization.nix 
-      #./shadowsocks.nix 
+      ./shadowsocks.nix 
     ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
@@ -39,14 +39,15 @@
     
     # Core features
     enableSystemMonitoring = true;     # System monitoring widgets (dgop)
-    enableClipboard = true;            # Clipboard history manager
+    quickshell.package = pkgs.quickshell;
     enableVPN = true;                  # VPN management widget
     enableDynamicTheming = true;       # Wallpaper-based theming (matugen)
     enableAudioWavelength = true;      # Audio visualizer (cava)
     enableCalendarEvents = true;       # Calendar integration (khal)
   };
-  programs.nix-ld.enable = true;
-
+  services.flatpak = {
+    enable = true;
+  };
   services.displayManager.gdm = {
       enable = true;
       wayland = true;

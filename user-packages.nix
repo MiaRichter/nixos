@@ -45,7 +45,7 @@ home.packages = with pkgs; [
     go
     rustc
     cargo
-    jetbrains.rider
+    # jetbrains.rider
     winetricks
     # Модные утилиты
     lsd
@@ -54,12 +54,13 @@ home.packages = with pkgs; [
     duf
     dust
     # для quickshell
-    quickshell
     appimage-run
     openvpn 
     wireguard-tools
     # # sddm theme
     # qt6.qtmultimedia
     # qt6.qtvirtualkeyboard 
+
+    chromium
   ];
 }
