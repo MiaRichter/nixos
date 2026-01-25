@@ -43,7 +43,7 @@ fonts.packages = with pkgs; [
     dmidecode
     proxychains
     shadowsocks-libev
-
+    tuna
     shadowsocks-rust
     # Драйверы и утилиты файловых систем
     ntfs3g
