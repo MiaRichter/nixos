@@ -53,10 +53,7 @@
     };
   services.displayManager.sddm = {
       enable = false;
-  # 2. Включить экспериментальную поддержку Wayland
       wayland.enable = true;
-  # 3. (Опционально) Установить тему, чтобы GUI не был пустым
-      theme = "sddm-astronaut-theme";
 };
   services.pipewire = {
      enable = true;
