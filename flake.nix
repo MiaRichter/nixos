@@ -32,12 +32,6 @@
         nixos-plymouth.nixosModules.default
         #zapret-discord-youtube.nixosModules.default
         
-        {
-          services.zapret-discord-youtube = {
-            enable = false;
-            config = "general(ALT)";
-          };
-        }
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
