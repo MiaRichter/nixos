@@ -35,7 +35,7 @@
         
         {
           services.zapret-discord-youtube = {
-            enable = true;
+            enable = false;
             config = "general(ALT)";
           };
         }
@@ -51,6 +51,28 @@
           };
         }
       ];
+    };
+    devShells.x86_64-linux.lab1 =
+    let
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+    in
+    pkgs.mkShell {
+      name = "lab1-excel-shell";
+
+      buildInputs = [
+        pkgs.rustc
+        pkgs.cargo
+        pkgs.clang
+        pkgs.llvmPackages.libclang
+        pkgs.pkg-config
+      ];
+
+      LIBCLANG_PATH = "${pkgs.llvmPackages.libclang.lib}/lib";
+
+      shellHook = ''
+        echo "🦀 Rust Excel Lab shell loaded"
+        echo "LIBCLANG_PATH=$LIBCLANG_PATH"
+      '';
     };
 
     # ДОБАВЛЕННЫЙ БЛОК - ваш путь к успешной работе home-manager

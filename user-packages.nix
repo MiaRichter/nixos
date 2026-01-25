@@ -45,6 +45,7 @@ home.packages = with pkgs; [
     go
     rustc
     cargo
+    winetricks
     # Модные утилиты
     lsd
     bat
@@ -59,5 +60,8 @@ home.packages = with pkgs; [
     # # sddm theme
     # qt6.qtmultimedia
     # qt6.qtvirtualkeyboard 
+    # proxy
+    proxychains
+    shadowsocks-libev
   ];
 }

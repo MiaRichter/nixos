@@ -30,11 +30,11 @@
     experimental-features = [ "nix-command" "flakes" ];
     auto-optimise-store = true;
   };
-  
-  # DNS который работает
-  networking.nameservers = [ 
-    "1.1.1.1"
-    "8.8.8.8" 
-    "77.88.8.8"
-  ];
+  environment.etc."proxychains.conf".text = ''
+    strict_chain
+    quiet_mode
+    proxy_dns
+    [ProxyList]
+    socks5 127.0.0.1 1080
+  '';
 }

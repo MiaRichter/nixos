@@ -9,6 +9,7 @@
       ./gameready.nix
       ./nvidia.nix
       ./network-optimization.nix 
+      ./shadowsocks.nix 
     ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
@@ -17,7 +18,7 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
     # Сеть
   networking.networkmanager.enable = true;
-  
+  networking.networkmanager.plugins = [ pkgs.networkmanager-openvpn ];
   # TUN/TAP для VPN
   boot.kernelModules = [ "tun" "wireguard" ];
   
@@ -25,7 +26,8 @@
   boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
   #networking.wireless.enable = false;
   time.timeZone = "Asia/Yekaterinburg";
-
+  programs.appimage.enable = true;
+  programs.appimage.binfmt = true;
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
