@@ -1,12 +1,6 @@
-{ config, pkgs, ... }:
+{pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [
-    shadowsocks-rust
-    proxychains
-  ];
-
-  # Минимальная конфигурация systemd
   systemd.services.shadowsocks-local = {
     enable = true;
     description = "Shadowsocks Client";
@@ -21,7 +15,18 @@
       User = "anrew";
     };
   };
-
+  environment.sessionVariables = {
+  # Для Wayland/Hyprland
+  NIXOS_OZONE_WL = "1";
+  MOZ_ENABLE_WAYLAND = "1";
+  
+  # Прокси для приложений, которые их уважают
+  http_proxy = "socks5://127.0.0.1:1080";
+  https_proxy = "socks5://127.0.0.1:1080";
+  ftp_proxy = "socks5://127.0.0.1:1080";
+  all_proxy = "socks5://127.0.0.1:1080";
+  no_proxy = "localhost,127.0.0.1";
+};
   environment.etc."proxychains.conf".text = ''
     strict_chain
     quiet_mode

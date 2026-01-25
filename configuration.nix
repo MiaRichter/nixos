@@ -16,18 +16,13 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
-    # Сеть
-  networking.networkmanager.enable = true;
-  networking.networkmanager.plugins = [ pkgs.networkmanager-openvpn ];
-  # TUN/TAP для VPN
-  boot.kernelModules = [ "tun" "wireguard" ];
+ 
   
-  # Разрешить доступ к /dev/net/tun
-  boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
+  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
   #networking.wireless.enable = false;
+  networking.networkmanager.plugins = [ pkgs.networkmanager-openvpn ];
   time.timeZone = "Asia/Yekaterinburg";
-  programs.appimage.enable = true;
-  programs.appimage.binfmt = true;
+
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
@@ -89,43 +84,18 @@
     font = "cyr-sun16";
     keyMap = "ru";
   };
-
+  programs.appimage.enable = true;
   services.udisks2.enable = true;
   services.gvfs.enable = true;
-  environment = {
-    # Переменные для Wayland
-    sessionVariables = {
-      BROWSER = "yandex-browser-stable";
-      NIXOS_OZONE_WL = "1";
-      MOZ_ENABLE_WAYLAND = "1";
-      QT_QPA_PLATFORM = "wayland";
-      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-      SDL_VIDEODRIVER = "wayland";
-      XDG_CURRENT_DESKTOP = "Hyprland";
-      XDG_SESSION_TYPE = "wayland";
-      XDG_SESSION_DESKTOP = "Hyprland";
-      LANG = "ru_RU.UTF-8";
-      LC_ALL = "ru_RU.UTF-8";
-      LC_TIME = "ru_RU.UTF-8";
-      LC_MONETARY = "ru_RU.UTF-8";
-      LC_PAPER = "ru_RU.UTF-8";
-      LC_NAME = "ru_RU.UTF-8";
-      LC_ADDRESS = "ru_RU.UTF-8";
-      LC_TELEPHONE = "ru_RU.UTF-8";
-      LC_MEASUREMENT = "ru_RU.UTF-8";
-      LC_IDENTIFICATION = "ru_RU.UTF-8";
-      WLR_DRM_NO_MODIFIERS = "1";
-      WLR_DRM_DEVICES = "/dev/dri/card0";
-    };
-};
+  
   xdg.portal = {
     enable = true;
-    wlr.enable = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
       xdg-desktop-portal-hyprland
     ];
   };
+  programs.appimage.binfmt = true;
   services.udisks2.settings = {
     "udisks2.conf" = {
       "mount_options.conf" = {
@@ -144,11 +114,7 @@
       action.id == "org.freedesktop.udisks2.filesystem-mount-system" ||
       action.id == "org.freedesktop.udisks2.filesystem-mount" ||
       action.id == "org.freedesktop.udisks2.eject-media" ||
-      action.id == "org.freedesktop.udisks2.power-off-drive" ||
-      action.id.indexOf("org.outline") === 0 ||
-      action.id.indexOf("org.bebra") === 0 ||
-      action.id == "org.freedesktop.policykit.exec" ||
-      action.id.indexOf("org.freedesktop.systemd1") === 0
+      action.id == "org.freedesktop.udisks2.power-off-drive"
     ) {
       return polkit.Result.YES;
     }
@@ -162,6 +128,8 @@ nix.gc = {
   };
 # Для автоматического монтирования в /run/media
   services.devmon.enable = true;  # автоматический мониторинг устройств
+  #services.openvpn.enable = true;
+  
   # Nix settings
   nix.settings.auto-optimise-store = true;
   #nix.settings.sandbox = false; 
