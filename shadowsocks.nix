@@ -19,7 +19,7 @@
       ExecStart = "${pkgs.shadowsocks-rust}/bin/sslocal -s 158.173.184.60 -p 443 -k 'K33iHg3S7rJhbKeKYNnHvE' -m 'chacha20-ietf-poly1305' -l 1080 --fast-open";
       Restart = "always";
       RestartSec = 10;
-      User = "akane";
+      User = "anrew";
       NoNewPrivileges = true;
       PrivateTmp = true;
     };
