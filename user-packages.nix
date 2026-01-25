@@ -61,6 +61,7 @@ home.packages = with pkgs; [
     # qt6.qtmultimedia
     # qt6.qtvirtualkeyboard 
 
+    jetbrains.rider
     chromium
   ];
 }
