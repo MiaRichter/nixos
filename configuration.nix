@@ -9,7 +9,7 @@
       ./gameready.nix
       ./nvidia.nix
       ./network-optimization.nix 
-      ./shadowsocks.nix 
+      #./shadowsocks.nix 
     ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;

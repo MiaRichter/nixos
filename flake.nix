@@ -35,7 +35,7 @@
         
         {
           services.zapret-discord-youtube = {
-            enable = false;
+            enable = true;
             config = "general(ALT)";
           };
         }
