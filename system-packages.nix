@@ -65,7 +65,7 @@ fonts.packages = with pkgs; [
     
     # Сетевые сервисы
     networkmanagerapplet
-    
+    python313Packages.pysocks
     # Безопасность
     gnupg
     openssl
