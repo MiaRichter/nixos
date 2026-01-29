@@ -64,8 +64,10 @@ fonts.packages = with pkgs; [
     gnome-disk-utility
     
     # Сетевые сервисы
+    openvpn
     networkmanagerapplet
     python313Packages.pysocks
+    python313Packages.requests
     # Безопасность
     gnupg
     openssl

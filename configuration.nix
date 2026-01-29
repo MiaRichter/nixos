@@ -9,14 +9,26 @@
       ./gameready.nix
       ./nvidia.nix
       ./network-optimization.nix 
-      ./shadowsocks.nix 
+      #./shadowsocks.nix 
     ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
- 
+ services.openvpn.servers = {
+    workvpn = {
+      # Читаем конфиг из файла
+      config = builtins.readFile ./config/vpn/frankfurt.ovpn;
+      
+      # Добавляем недостающие настройки
+      up = "/etc/openvpn/update-resolv-conf";
+      down = "/etc/openvpn/update-resolv-conf";
+      
+      autoStart = true;
+      updateResolvConf = true;
+    };
+  };
   
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
   #networking.wireless.enable = false;
