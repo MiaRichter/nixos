@@ -5,7 +5,7 @@ home.packages = with pkgs; [
     linux-wallpaperengine
     # Редакторы и IDE
     vscodium
-    #jetbrains.rider
+    jetbrains.rider
     # Мессенджеры и коммуникация
     telegram-desktop
     discord
