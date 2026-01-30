@@ -1,5 +1,5 @@
 {
   # User Configuration
-  username = "akane";
-  hostname = "DesMia";
+  username = "anrew";
+  hostname = "alice";
 }
