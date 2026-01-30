@@ -42,6 +42,7 @@ fonts.packages = with pkgs; [
     lm_sensors
     dmidecode
     proxychains
+    desktop-file-utils
     shadowsocks-libev
     tuna
     shadowsocks-rust
