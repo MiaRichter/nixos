@@ -67,7 +67,9 @@ fonts.packages = with pkgs; [
     openvpn
     networkmanagerapplet
     python313Packages.pysocks
+    python313Packages.pip
     python313Packages.requests
+    python313Packages.python-socks
     # Безопасность
     gnupg
     openssl
