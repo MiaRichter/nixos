@@ -113,6 +113,12 @@ in
     enable = true;
     defaultApplications = {
       "inode/directory" = "org.gnome.Nautilus.desktop";
+      "text/html" = "yandex-browser-stable.desktop";
+      "x-scheme-handler/http" = "yandex-browser-stable.desktop";
+      "x-scheme-handler/https" = "yandex-browser-stable.desktop";
+      "x-scheme-handler/about" = "yandex-browser-stable.desktop";
+      "x-scheme-handler/unknown" = "yandex-browser-stable.desktop";
+      "application/xhtml+xml" = "yandex-browser-stable.desktop";
     };
   };
 }

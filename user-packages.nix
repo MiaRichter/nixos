@@ -15,7 +15,7 @@ home.packages = with pkgs; [
     # уведомления
     # Игры
     osu-lazer
-    
+    qbittorrent
     # Офис
     libreoffice-fresh
     
@@ -45,6 +45,8 @@ home.packages = with pkgs; [
     go
     rustc
     cargo
+    # jetbrains.rider
+    winetricks
     # Модные утилиты
     lsd
     bat
@@ -52,10 +54,14 @@ home.packages = with pkgs; [
     duf
     dust
     # для quickshell
-    quickshell
-
+    appimage-run
+    wireguard-tools
     # # sddm theme
     # qt6.qtmultimedia
     # qt6.qtvirtualkeyboard 
+
+    jetbrains.rider
+    chromium
+    protonplus
   ];
 }

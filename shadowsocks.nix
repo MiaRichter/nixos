@@ -7,7 +7,7 @@ let
     };
 in
 {
-  systemd.services.shadowsocks-local = {
+  systemd.services.shadowsocks-http  = {
     enable = true;
     description = "Shadowsocks Client";
     after = ["network.target"];
@@ -27,10 +27,11 @@ in
   MOZ_ENABLE_WAYLAND = "1";
   
   # Прокси для приложений, которые их уважают
-  http_proxy  = "socks5h://127.0.0.1:1080";
-  https_proxy = "socks5h://127.0.0.1:1080";
-  all_proxy   = "socks5h://127.0.0.1:1080";
-  ftp_proxy = "socks5://127.0.0.1:1080";
+  
+  http_proxy  = "http://127.0.0.1:1080";
+  https_proxy = "http://127.0.0.1:1080";
+  all_proxy   = "http://127.0.0.1:1080";
+  ftp_proxy = "http://127.0.0.1:1080";
   no_proxy = "localhost,127.0.0.1";
 };
 }

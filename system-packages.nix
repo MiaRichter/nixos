@@ -8,6 +8,24 @@ fonts.packages = with pkgs; [
     dejavu_fonts
     noto-fonts
     noto-fonts-color-emoji
+    liberation_ttf
+    freefont_ttf
+    
+    # Noto шрифты (много языков)
+    noto-fonts-lgc-plus
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
+    noto-fonts-monochrome-emoji
+    
+    # Microsoft совместимые (для игр)
+    corefonts  # или vistafonts
+    # или если нет в официальных репозиториях:
+    # (from nixos-unstable) microsoft-fonts
+    
+    # Дополнительные
+    ubuntu-classic
+    fira-code
+    fira-code-symbols
     # Font Awesome
     font-awesome                # Включает все версии
   ];
@@ -25,6 +43,7 @@ fonts.packages = with pkgs; [
     dmidecode
     proxychains
     shadowsocks-libev
+    tuna
     shadowsocks-rust
     # Драйверы и утилиты файловых систем
     ntfs3g
@@ -45,8 +64,12 @@ fonts.packages = with pkgs; [
     gnome-disk-utility
     
     # Сетевые сервисы
+    openvpn
     networkmanagerapplet
-    
+    python313Packages.pysocks
+    python313Packages.pip
+    python313Packages.requests
+    python313Packages.python-socks
     # Безопасность
     gnupg
     openssl

@@ -16,7 +16,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
- 
   
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
   #networking.wireless.enable = false;
@@ -39,14 +38,15 @@
     
     # Core features
     enableSystemMonitoring = true;     # System monitoring widgets (dgop)
-    #enableClipboard = true;            # Clipboard history manager
+    quickshell.package = pkgs.quickshell;
     enableVPN = true;                  # VPN management widget
     enableDynamicTheming = true;       # Wallpaper-based theming (matugen)
     enableAudioWavelength = true;      # Audio visualizer (cava)
     enableCalendarEvents = true;       # Calendar integration (khal)
   };
-  programs.nix-ld.enable = true;
-
+  services.flatpak = {
+    enable = true;
+  };
   services.displayManager.gdm = {
       enable = true;
       wayland = true;
