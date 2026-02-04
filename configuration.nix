@@ -47,6 +47,23 @@
   services.flatpak = {
     enable = true;
   };
+  services.postgresql = {
+    enable = true;
+    package = pkgs.postgresql_15;        # конкретная версия
+    enableTCPIP = true;                  # разрешить TCP
+    ensureDatabases = [ "appdb" ];       # сразу создать БД
+
+    authentication = pkgs.lib.mkOverride 10 ''
+      local all all peer
+      host  all all 127.0.0.1/32 md5
+      host  all all ::1/128 md5
+    '';
+
+    initialScript = pkgs.writeText "init" ''
+      CREATE USER appuser WITH LOGIN PASSWORD 'appsecret';
+      GRANT ALL PRIVILEGES ON DATABASE appdb TO appuser;
+    '';
+  };
   services.displayManager.gdm = {
       enable = false;
       wayland = true;

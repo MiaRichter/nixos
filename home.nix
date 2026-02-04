@@ -17,8 +17,14 @@ in
   nixpkgs.config.allowUnfree = true;
   # Настройки программ
   programs.git = {
-    enable = true;
+  enable = true;
+  userName = "${vars.username}";
+  userEmail = "${vars.userEmail}";
+  extraConfig = {
+    # любые дополнительные настройки
+    credential.helper = "${pkgs.git}/bin/git-credential-store";
   };
+};
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
@@ -29,12 +35,12 @@ in
       extensions = with pkgs.vscode-extensions; [
         # Языки программирования
         ms-python.python
-        # ms-vscode.cpptools # все равно не загрузит из блокировки в рф
+        ms-vscode.cpptools
         golang.go
         redhat.java
-        # ms-dotnettools.csharp
+        ms-dotnettools.csharp
         redhat.vscode-yaml
-        
+        rust-lang.rust-analyzer   # Rust
         # Nix language support
         jnoortheen.nix-ide
         bbenoist.nix
@@ -49,8 +55,8 @@ in
         
         # Утилиты
         eamodio.gitlens
-        # ms-azuretools.vscode-docker
-        #github.copilot
+        ms-azuretools.vscode-docker
+        github.copilot
       ];
       
       # Настройки редактора теперь здесь
@@ -100,22 +106,23 @@ in
   # Переменные окружения
   home.sessionVariables = {
     EDITOR = "nano";
-    BROWSER = "yandex-browser-stable";
+    BROWSER = "ru.yandex.Browser ";
   };
-  xdg.desktopEntries.yandex-browser = {
-  name = "Yandex Browser";
-  genericName = "Web Browser";
-  exec = "yandex-browser-stable %U";
-  icon = "yandex-browser";
-  terminal = false;
-
-  categories = [ "Network" "WebBrowser" ];
-  mimeType = [
-    "text/html"
-    "x-scheme-handler/http"
-    "x-scheme-handler/https"
-  ];
-};
+  xdg.desktopEntries."ru.yandex.Browser" = {
+    name = "Yandex Browser";
+    genericName = "Web Browser";
+    exec = "ru.yandex.Browser";
+    icon = "yandex-browser";
+    terminal = false;
+    categories = [ "Network" "WebBrowser" ];
+    mimeType = [
+      "text/html"
+      "text/xml"
+      "application/xhtml+xml"
+      "x-scheme-handler/http"
+      "x-scheme-handler/https"
+    ];
+  };
 
   # Включить управление файлами через home-manager
   xdg.enable = true;
@@ -124,17 +131,16 @@ in
   
   # Или полная настройка mimeApps
   xdg.mimeApps = {
-  enable = true;
-  defaultApplications = {
-    "inode/directory" = "org.gnome.Nautilus.desktop";
-
-    "text/html" = "yandex-browser.desktop";
-    "x-scheme-handler/http" = "yandex-browser.desktop";
-    "x-scheme-handler/https" = "yandex-browser.desktop";
-    "x-scheme-handler/about" = "yandex-browser.desktop";
-    "x-scheme-handler/unknown" = "yandex-browser.desktop";
-    "application/xhtml+xml" = "yandex-browser.desktop";
+    enable = true;
+    defaultApplications = {
+      # Основные веб-типы
+      "text/html" = [ "ru.yandex.Browser.desktop" ];
+      "x-scheme-handler/http" = [ "ru.yandex.Browser.desktop" ];
+      "x-scheme-handler/https" = [ "ru.yandex.Browser.desktop" ];
+      "x-scheme-handler/about" = [ "ru.yandex.Browser.desktop" ];
+      "application/xhtml+xml" = [ "ru.yandex.Browser.desktop" ];
+      # Можно добавить и другие типы
+    };
   };
-};
 
 }
