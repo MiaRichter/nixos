@@ -5,14 +5,14 @@
     #zapret-discord-youtube.url = "github:kartavkun/zapret-discord-youtube";
     nixos-plymouth.url = "github:BeatLink/nixos-plymouth";
     yandex-browser.url = "github:miuirussia/yandex-browser.nix";
-    dms.url = "github:AvengeMedia/DankMaterialShell";
+    #dms.url = "github:AvengeMedia/DankMaterialShell";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = {nixpkgs, home-manager,nixos-plymouth, ... }: 
+  outputs = {nixpkgs, home-manager,nixos-plymouth, yandex-browser, ... }: 
     let
       # ИМПОРТИРУЙТЕ переменные здесь
       vars = if builtins.pathExists ./user.nix then import ./user.nix else {

@@ -21,7 +21,6 @@ fonts.packages = with pkgs; [
     corefonts  # или vistafonts
     # или если нет в официальных репозиториях:
     # (from nixos-unstable) microsoft-fonts
-    
     # Дополнительные
     ubuntu-classic
     fira-code
@@ -46,6 +45,7 @@ fonts.packages = with pkgs; [
     shadowsocks-libev
     tuna
     shadowsocks-rust
+    
     # Драйверы и утилиты файловых систем
     ntfs3g
     exfat

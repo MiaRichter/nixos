@@ -18,7 +18,7 @@ home.packages = with pkgs; [
     qbittorrent
     # Офис
     libreoffice-fresh
-    
+    firefox
     # Терминалы и оболочки
     kitty
     
@@ -26,7 +26,7 @@ home.packages = with pkgs; [
     btop
     fastfetch
     hyprpolkitagent
-    
+
     # Hyprland экосистема
     rofi
     waybar
@@ -36,7 +36,7 @@ home.packages = with pkgs; [
     wofi
     hyprshot
     nwg-look
-    
+    mesa-demos
     # Утилиты разработчика
     dotnet-sdk
     gcc

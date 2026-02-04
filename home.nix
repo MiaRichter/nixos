@@ -102,7 +102,21 @@ in
     EDITOR = "nano";
     BROWSER = "yandex-browser-stable";
   };
-  
+  xdg.desktopEntries.yandex-browser = {
+  name = "Yandex Browser";
+  genericName = "Web Browser";
+  exec = "yandex-browser-stable %U";
+  icon = "yandex-browser";
+  terminal = false;
+
+  categories = [ "Network" "WebBrowser" ];
+  mimeType = [
+    "text/html"
+    "x-scheme-handler/http"
+    "x-scheme-handler/https"
+  ];
+};
+
   # Включить управление файлами через home-manager
   xdg.enable = true;
   xdg.configFile."mimeapps.list".force = true;
@@ -110,15 +124,17 @@ in
   
   # Или полная настройка mimeApps
   xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      "inode/directory" = "org.gnome.Nautilus.desktop";
-      "text/html" = "yandex-browser-stable.desktop";
-      "x-scheme-handler/http" = "yandex-browser-stable.desktop";
-      "x-scheme-handler/https" = "yandex-browser-stable.desktop";
-      "x-scheme-handler/about" = "yandex-browser-stable.desktop";
-      "x-scheme-handler/unknown" = "yandex-browser-stable.desktop";
-      "application/xhtml+xml" = "yandex-browser-stable.desktop";
-    };
+  enable = true;
+  defaultApplications = {
+    "inode/directory" = "org.gnome.Nautilus.desktop";
+
+    "text/html" = "yandex-browser.desktop";
+    "x-scheme-handler/http" = "yandex-browser.desktop";
+    "x-scheme-handler/https" = "yandex-browser.desktop";
+    "x-scheme-handler/about" = "yandex-browser.desktop";
+    "x-scheme-handler/unknown" = "yandex-browser.desktop";
+    "application/xhtml+xml" = "yandex-browser.desktop";
   };
+};
+
 }

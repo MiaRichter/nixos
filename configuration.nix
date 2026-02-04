@@ -15,7 +15,7 @@
   nixpkgs.config.allowUnfree = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
   
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
   #networking.wireless.enable = false;
@@ -29,7 +29,7 @@
     '';
   };
   programs.dms-shell = {
-    enable = true;
+    enable = false;
 
     systemd = {
       enable = true;             # Systemd service for auto-start
@@ -48,11 +48,11 @@
     enable = true;
   };
   services.displayManager.gdm = {
-      enable = true;
+      enable = false;
       wayland = true;
     };
   services.displayManager.sddm = {
-      enable = false;
+      enable = true;
       wayland.enable = true;
 };
   services.pipewire = {
@@ -63,12 +63,12 @@
      pulse.enable = true;
    };
   
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
+  #programs.hyprland = {
+   # enable = false;
+    #xwayland.enable = true;
+  #};
  
-  
+  services.desktopManager.plasma6.enable = true;
 
   # Язык системы
   i18n = {
@@ -86,12 +86,12 @@
   services.gvfs.enable = true;
   
   xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-hyprland
-    ];
-  };
+  enable = true;
+  extraPortals = [
+    pkgs.kdePackages.xdg-desktop-portal-kde
+    pkgs.xdg-desktop-portal-gtk
+  ];
+};
   programs.appimage.binfmt = true;
   services.udisks2.settings = {
     "udisks2.conf" = {
