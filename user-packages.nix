@@ -5,7 +5,7 @@ home.packages = with pkgs; [
     linux-wallpaperengine
     # Редакторы и IDE
     vscodium
-    jetbrains.rider
+    
     # Мессенджеры и коммуникация
     telegram-desktop
     discord
@@ -26,7 +26,7 @@ home.packages = with pkgs; [
     btop
     fastfetch
     hyprpolkitagent
-
+    jetbrains-toolbox
     # Hyprland экосистема
     rofi
     waybar
@@ -39,13 +39,13 @@ home.packages = with pkgs; [
     mesa-demos
     # Утилиты разработчика
     dotnet-sdk
+    dotnet-runtime
     gcc
     python3
     nodejs
     go
     rustc
     cargo
-    # jetbrains.rider
     winetricks
     # Модные утилиты
     lsd
@@ -60,7 +60,6 @@ home.packages = with pkgs; [
     # qt6.qtmultimedia
     # qt6.qtvirtualkeyboard 
 
-    jetbrains.rider
     chromium
     protonplus
   ];

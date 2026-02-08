@@ -127,6 +127,7 @@ in
   # Включить управление файлами через home-manager
   xdg.enable = true;
   xdg.configFile."mimeapps.list".force = true;
+  
   xdg.dataFile."applications/mimeapps.list".force = true;
   
   # Или полная настройка mimeApps

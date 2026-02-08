@@ -45,7 +45,7 @@ fonts.packages = with pkgs; [
     shadowsocks-libev
     tuna
     shadowsocks-rust
-    
+    zstd
     # Драйверы и утилиты файловых систем
     ntfs3g
     exfat
