@@ -25,7 +25,8 @@ home.packages = with pkgs; [
     # Мониторинг
     btop
     fastfetch
-    hyprpolkitagent
+    #hyprpolkitagent
+    kdePackages.polkit-kde-agent-1
     jetbrains-toolbox
     # Hyprland экосистема
     rofi
