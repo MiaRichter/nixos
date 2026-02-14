@@ -8,20 +8,21 @@ home.packages = with pkgs; [
     
     # Мессенджеры и коммуникация
     telegram-desktop
-    discord
+    #discord
     # Мультимедиа
     mpv
     vlc
     # уведомления
     # Игры
-    osu-lazer
+    osu-lazer-bin
     qbittorrent
     # Офис
     libreoffice-fresh
     firefox
     # Терминалы и оболочки
     kitty
-    
+    vencord
+    vesktop
     # Мониторинг
     btop
     fastfetch

@@ -32,6 +32,6 @@ in
   https_proxy = "http://127.0.0.1:1080";
   all_proxy   = "http://127.0.0.1:1080";
   ftp_proxy = "http://127.0.0.1:1080";
-  no_proxy = "localhost,127.0.0.1,vk.com,.vk.com,vk.ru,.vk.ru, newlms.magtu.ru, remanga.org";
+  no_proxy = "localhost,127.0.0.1,vk.com,.vk.com,vk.ru,.vk.ru, newlms.magtu.ru, remanga.org, eldenring.fandom.com";
 };
 }
