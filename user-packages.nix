@@ -28,7 +28,7 @@ home.packages = with pkgs; [
     fastfetch
     #hyprpolkitagent
     kdePackages.polkit-kde-agent-1
-    jetbrains-toolbox
+    #jetbrains-toolbox
     # Hyprland экосистема
     rofi
     waybar
