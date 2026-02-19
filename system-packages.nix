@@ -74,7 +74,7 @@ fonts.packages = with pkgs; [
     # Безопасность
     gnupg
     openssl
-
+    #xdg-desktop-portal-kde
     # Архиваторы - УЖЕ В system-packages.nix
     zip
     unzip

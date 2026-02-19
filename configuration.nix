@@ -10,6 +10,7 @@
       ./nvidia.nix
       ./network-optimization.nix 
       ./shadowsocks.nix 
+      /etc/nixos/audio.nix
     ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
@@ -28,63 +29,28 @@
       set -U fish_greeting ""
     '';
   };
-  programs.dms-shell = {
-    enable = false;
 
-    systemd = {
-      enable = true;             # Systemd service for auto-start
-      restartIfChanged = true;   # Auto-restart dms.service when dms-shell changes
-    };
-    
-    # Core features
-    enableSystemMonitoring = true;     # System monitoring widgets (dgop)
-    quickshell.package = pkgs.quickshell;
-    enableVPN = true;                  # VPN management widget
-    enableDynamicTheming = true;       # Wallpaper-based theming (matugen)
-    enableAudioWavelength = true;      # Audio visualizer (cava)
-    enableCalendarEvents = true;       # Calendar integration (khal)
-  };
   services.flatpak = {
     enable = true;
   };
   services.postgresql = {
-    enable = true;
-    package = pkgs.postgresql_15;        # конкретная версия
-    enableTCPIP = true;                  # разрешить TCP
-    ensureDatabases = [ "appdb" ];       # сразу создать БД
+  enable = true;
+  package = pkgs.postgresql_15; # или любая версия, которую хочешь
+  dataDir = "/var/lib/postgresql/data";
+  
+  # Для разработки можно временно поставить trust
+  authentication = ''
+    # локальные соединения без пароля
+    local   all             all                                     trust
+    host    all             all             127.0.0.1/32            md5
+  '';
+};
 
-    authentication = pkgs.lib.mkOverride 10 ''
-      local all all peer
-      host  all all 127.0.0.1/32 md5
-      host  all all ::1/128 md5
-    '';
-
-    initialScript = pkgs.writeText "init" ''
-      CREATE USER appuser WITH LOGIN PASSWORD 'appsecret';
-      GRANT ALL PRIVILEGES ON DATABASE appdb TO appuser;
-    '';
-  };
-  services.displayManager.gdm = {
-      enable = false;
-      wayland = true;
-    };
   services.displayManager.sddm = {
       enable = true;
       wayland.enable = true;
 };
-  services.pipewire = {
-     enable = true;
-     wireplumber.enable = true;
-     alsa.enable = true;
-     alsa.support32Bit = true;
-     pulse.enable = true;
-   };
-  
-  #programs.hyprland = {
-   # enable = false;
-    #xwayland.enable = true;
-  #};
- 
+
   services.desktopManager.plasma6.enable = true;
 
   # Язык системы
@@ -101,14 +67,38 @@
   programs.appimage.enable = true;
   services.udisks2.enable = true;
   services.gvfs.enable = true;
-  
+    # Добавьте этот блок после xdg.portal
+  systemd.user.services.xdg-desktop-portal = {
+    enable = true;
+    description = "Portal service";
+    after = [ "graphical-session.target" ];
+    wantedBy = [ "graphical-session.target" ];
+    
+    serviceConfig = {
+      Type = "dbus";
+      BusName = "org.freedesktop.portal.Desktop";
+      ExecStart = "${pkgs.xdg-desktop-portal}/libexec/xdg-desktop-portal";
+      Restart = "on-failure";
+    };
+  };
   xdg.portal = {
-  enable = true;
-  extraPortals = [
-    pkgs.kdePackages.xdg-desktop-portal-kde
-    pkgs.xdg-desktop-portal-gtk
-  ];
-};
+    enable = true;
+    extraPortals = [
+      pkgs.kdePackages.xdg-desktop-portal-kde  # ТОЛЬКО KDE портал
+    ];
+    
+    config = {
+      common = {
+        default = [ "kde" ];  # Только KDE
+      };
+      plasma = {
+        default = [ "kde" ];
+      };
+    };
+  };
+
+  # Добавляем dconf (важно для порталов)
+  programs.dconf.enable = true;
   programs.appimage.binfmt = true;
   services.udisks2.settings = {
     "udisks2.conf" = {
@@ -140,13 +130,8 @@ nix.gc = {
     dates = "weekly";
     options = "--delete-older-than 7d";
   };
-# Для автоматического монтирования в /run/media
-  services.devmon.enable = true;  # автоматический мониторинг устройств
-  #services.openvpn.enable = true;
-  
-  # Nix settings
+  services.devmon.enable = true;
   nix.settings.auto-optimise-store = true;
-  #nix.settings.sandbox = false; 
   system.stateVersion = "26.05";
 
 }

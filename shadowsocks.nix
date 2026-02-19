@@ -15,7 +15,7 @@ in
     
     serviceConfig = {
       Type = "simple";
-      ExecStart = "${pkgs.shadowsocks-rust}/bin/sslocal --server-addr 83.243.123.135:443 --password AxoXuYLU6i2EklMDOzvOBv --encrypt-method chacha20-ietf-poly1305 --local-addr 127.0.0.1:1080 --fast-open";
+      ExecStart = "${pkgs.shadowsocks-rust}/bin/sslocal --server-addr 85.202.192.23:443 --password 6NQGiZjFLmkiErtCdsN69S --encrypt-method chacha20-ietf-poly1305 --local-addr 127.0.0.1:1080 --fast-open";
       Restart = "on-failure";
       RestartSec = 5;
       User = "${vars.username}";

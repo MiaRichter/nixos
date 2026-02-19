@@ -28,14 +28,16 @@ home.packages = with pkgs; [
     fastfetch
     #hyprpolkitagent
     kdePackages.polkit-kde-agent-1
+    rust-analyzer
     #jetbrains-toolbox
     # Hyprland экосистема
-    rofi
-    waybar
-    hyprpaper
+    #rofi
+    #waybar
+    insomnia
+    #hyprpaper
     hyprlock
-    hypridle
-    wofi
+    #hypridle
+    #wofi
     hyprshot
     nwg-look
     mesa-demos
@@ -61,8 +63,8 @@ home.packages = with pkgs; [
     # # sddm theme
     # qt6.qtmultimedia
     # qt6.qtvirtualkeyboard 
-
-    chromium
+    xdg-desktop-portal
+    #chromium
     protonplus
   ];
 }

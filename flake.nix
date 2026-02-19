@@ -12,7 +12,7 @@
     };
   };
 
-  outputs = {nixpkgs, home-manager,nixos-plymouth, yandex-browser, ... }: 
+  outputs = {nixpkgs, home-manager,nixos-plymouth, ... }: 
     let
       # ИМПОРТИРУЙТЕ переменные здесь
       vars = if builtins.pathExists ./user.nix then import ./user.nix else {
@@ -24,6 +24,7 @@
     
     nixosConfigurations.${vars.hostname} = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      
       modules = [
         ./hardware-configuration.nix
         ./configuration.nix
@@ -35,6 +36,7 @@
         
         home-manager.nixosModules.home-manager
         {
+          
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.${vars.username} = {
@@ -59,6 +61,7 @@
       pkgs.clang
       pkgs.llvmPackages.libclang
       pkgs.pkg-config
+      pkgs.xdg-desktop-portal-kde
     ];
 
     LIBCLANG_PATH = "${pkgs.llvmPackages.libclang.lib}/lib";
