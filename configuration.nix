@@ -10,7 +10,8 @@
       ./nvidia.nix
       ./network-optimization.nix 
       ./shadowsocks.nix 
-      /etc/nixos/audio.nix
+      ./audio.nix
+      ./hdr.nix
     ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
@@ -96,6 +97,14 @@
       };
     };
   };
+  
+  security.wrappers.gamescope = {
+    source = "${pkgs.gamescope}/bin/gamescope";
+    capabilities = "cap_sys_admin+ep";
+    owner = "root";
+    group = "root";
+    permissions = "u+rx,g+rx,o+rx";
+  };
 
   # Добавляем dconf (важно для порталов)
   programs.dconf.enable = true;
@@ -110,7 +119,6 @@
     };
   };
     security.polkit.enable = true;
-    security.rtkit.enable = true;
     security.sudo.extraConfig = "Defaults pwfeedback";
     security.polkit.extraConfig = ''
   polkit.addRule(function(action, subject) {

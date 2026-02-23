@@ -91,5 +91,7 @@ fonts.packages = with pkgs; [
     jq
     libnotify
     numlockx
+    libsForQt5.kscreen-doctor
+    vulkan-tools
   ];
 }

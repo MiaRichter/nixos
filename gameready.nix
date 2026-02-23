@@ -42,12 +42,8 @@
       extraCompatPackages = [ pkgs.proton-ge-bin ];
     };
     gamescope = {
-      enable = true;
-      capSysNice = true;
-      args = [
-        "--rt"
-        "--expose-wayland"
-      ];
+      enable = false;
+      
     };
   };
   services.xserver.enable = false; # Assuming no other Xserver 
