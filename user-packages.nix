@@ -28,7 +28,6 @@ home.packages = with pkgs; [
     fastfetch
     #hyprpolkitagent
     kdePackages.polkit-kde-agent-1
-    rust-analyzer
     #jetbrains-toolbox
     # Hyprland экосистема
     #rofi
@@ -49,7 +48,6 @@ home.packages = with pkgs; [
     nodejs
     go
     rustc
-    cargo
     winetricks
     # Модные утилиты
     lsd
@@ -66,5 +64,9 @@ home.packages = with pkgs; [
     xdg-desktop-portal
     #chromium
     protonplus
+    #arcan
+    arcan-all-wrapped
+    durden
+    rustup
   ];
 }

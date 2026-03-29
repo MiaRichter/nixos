@@ -12,6 +12,7 @@
       ./shadowsocks.nix 
       ./audio.nix
       ./hdr.nix
+      ./monado.nix 
     ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
@@ -30,6 +31,7 @@
       set -U fish_greeting ""
     '';
   };
+  programs.xwayland.enable = true;
 
   services.flatpak = {
     enable = true;
